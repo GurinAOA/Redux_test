@@ -29,8 +29,6 @@ export default function Edit({ obj,id }) {
                 <p>Status</p>
                 <input type="text" value={userStatus} placeholder="status" onChange={(e) => { setUserStatus(e.target.value) }} />
             </div>
-            <div>
-                <button onClick={editPost} >EDIT POST</button>
-            </div>
+      
         </div>)
 }
