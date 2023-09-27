@@ -9,6 +9,9 @@ import Edit from "./components/Edit";
 function App() {
   const posts = useSelector((state) => state);
   const dispatch = useDispatch();
+
+
+
   console.log(posts);
 
   function delPost(id) {
@@ -18,6 +21,8 @@ function App() {
   function editPost(obj, id) {
     dispatch(put(obj, id));
   }
+
+
 
   return (
     <div className="App">
@@ -40,10 +45,6 @@ function App() {
               DELPOST
             </button>
 
-            <div>
-              <Edit id={posts.length ? posts[posts.length - 1].id : null} />
-            </div>
-
             <button
               className="btn"
               onClick={() => {
@@ -52,7 +53,12 @@ function App() {
             >
               EDITPOST
             </button>
+
+            <div>
+              <Edit id={posts.id} object={posts.object} />
+            </div>
           </li>
+          
         ))}
       </ul>
     </div>

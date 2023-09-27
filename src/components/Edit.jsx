@@ -6,11 +6,14 @@ export default function Edit({ obj,id }) {
     const [userName, setUserName] = useState('')
     const [userAge, setUserAge] = useState('')
     const [userStatus, setUserStatus] = useState('')
-    const dispatch = useDispatch()
 
-    function editPost() {
+
+    function savePost(id) {
         dispatch(put({name:userName,age:userAge,status:userStatus,id:id}))
     }
+
+
+    const dispatch = useDispatch()
 
     return (
         <div>
@@ -29,6 +32,13 @@ export default function Edit({ obj,id }) {
                 <p>Status</p>
                 <input type="text" value={userStatus} placeholder="status" onChange={(e) => { setUserStatus(e.target.value) }} />
             </div>
-      
+            <button
+              className="btn"
+              onClick={() => {
+                savePost(id);
+              }}
+            >
+              SAVEPOST
+            </button>
         </div>)
 }
