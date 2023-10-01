@@ -18,7 +18,7 @@ export function reducer(state = initialState, action) {
         case 'PUT' :
             const editState = state.map(item=>{
                 if(action.payload.id == item.id){
-                    item = action.payload.newObject
+                    item = action.payload
                     return item
                 }
                 return item

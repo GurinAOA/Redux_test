@@ -5,28 +5,24 @@ import { put } from "./redux/action";
 import "./App.css";
 import Counter from "./components/Counter";
 import Edit from "./components/Edit";
+import { useState } from "react";
 
 function App() {
+  const [ activeId, setActiveId ] = useState(false);
   const posts = useSelector((state) => state);
   const dispatch = useDispatch();
 
-
-
-  console.log(posts);
 
   function delPost(id) {
     dispatch(del(id));
   }
 
-  function editPost(obj, id) {
-    dispatch(put(obj, id));
+  function editPostPage(id) {
+    setActiveId(id);
   }
-
-
 
   return (
     <div className="App">
-      <div className="title">Enter your data</div>
       <div>
         <Counter id={posts.length ? posts[posts.length - 1].id : null} />
       </div>
@@ -48,17 +44,13 @@ function App() {
             <button
               className="btn"
               onClick={() => {
-                editPost(item.id);
+                editPostPage(item.id);
               }}
             >
               EDITPOST
             </button>
-
-            <div>
-              <Edit id={posts.id} object={posts.object} />
-            </div>
+           {activeId==item.id && <Edit title= {item.title} text={item.text} status={item.status} id ={item.id} /> }
           </li>
-          
         ))}
       </ul>
     </div>
