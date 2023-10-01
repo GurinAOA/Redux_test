@@ -49,7 +49,7 @@ function App() {
             >
               EDITPOST
             </button>
-           {activeId==item.id && <Edit title= {item.title} text={item.text} status={item.status} id ={item.id} /> }
+           {activeId==item.id && <Edit title= {item.title} text={item.text} status={item.status} id ={item.id} setActiveId={setActiveId}/> }
           </li>
         ))}
       </ul>

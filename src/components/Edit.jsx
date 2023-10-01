@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { put } from "../redux/action";
 
-export default function Edit({ title, text, status, id }) {
+export default function Edit({ title, text, status, id, setActiveId }) {
   const [titleSt, setTitleSt] = useState("");
   const [textSt, setTextSt] = useState("");
   const [statusSt, setStatusSt] = useState("");
@@ -21,9 +21,11 @@ export default function Edit({ title, text, status, id }) {
       id,
     };
     dispatch(put(obj));
+    setActiveId(false);
   }
 
   const dispatch = useDispatch();
+
 
   return (
     <div>
